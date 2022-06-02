@@ -1,25 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import ListContainer from './ListContainer';
+import TaskForm from './TaskForm';
+
 
 function App() {
+
+
+  const [listsANDtasks, setListsANDtasks] = useState([])
+
+  function handleFetch(){
+    fetch("http://localhost:9292/lists")
+    .then(resp => resp.json())
+    .then(data => {
+      // console.log(data)
+      setListsANDtasks(data)
+      console.log(setListsANDtasks)
+    })
+  }
+
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <em><h1>Unconvential To Do List!</h1></em>
+      <ListContainer handleFetch = {handleFetch} listsANDtasks={listsANDtasks}/>
+      <TaskForm handleFetch = {handleFetch} listANDtasks = {listsANDtasks}/>
     </div>
   );
+
 }
 
 export default App;
