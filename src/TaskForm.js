@@ -14,6 +14,7 @@ function handleCheck(){
 }
 
 
+
 function handleSubmit(e){
     e.preventDefault(); 
     const obj = {
@@ -30,7 +31,7 @@ function handleSubmit(e){
     },
     body: JSON.stringify(obj)
     })
-    .then(handleFetch)
+    .then(handleFetch())
 }
 
 function enterNumber(){
@@ -38,21 +39,21 @@ function enterNumber(){
 }
 
 return (
-<div> Create a task here!
+<div> <h3>Create a task here!</h3>
     <form onSubmit={handleSubmit}>
     <label>Task description:</label>
     <input name="description" type="text" placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)}/>
     <br/>
-    <label>Task completed:</label>
+    {/* <label>Task completed:</label>
     <input type="checkbox" checked={isCompleted} onChange={handleCheck}/>
-    <br/>
-    <label>Task Priority:</label>
-    <input name="priority" type="number" placeholder="Enter a priority number" value={priority} onChange={(e) => setPriority(e.target.value)}/>
+    <br/> */}
+    {/* <label>Task Priority:</label>
+    <input name="priority" type="number" placeholder="Enter a priority number" value={priority} onChange={(e) => setPriority(e.target.value)}/> */}
     <br/>
 <label name="list_lablel">Choose a category:</label>
 <select onChange={(e) => setListId(e.target.value)} name="list_id">
 
-<option disabled selected value> -- select an option cuzzzz -- </option> 
+<option disabled selected value> -- select an option -- </option> 
 
   {listANDtasks.map(eachList => <option value={eachList.id}>{eachList.title}</option>)}
 </select>
@@ -61,7 +62,7 @@ return (
 
 
 
-    <button>Click here to submit!</button>
+    <button>Click here to submit</button>
 
 
 

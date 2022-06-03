@@ -10,7 +10,7 @@ useEffect(() => {
 }, [])
 
   const renderedLists = listsANDtasks.map(list => {
-    return <List key={list.id} list = {list}/>
+    return <List key={list.id} list = {list} handleFetch={handleFetch} listsANDtasks={listsANDtasks}/>
   })
 
   return (
